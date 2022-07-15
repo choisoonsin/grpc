@@ -1,0 +1,5 @@
+#client
+/client/HELP.md
+/client/settings.gradle
+/client/gradlew*
+/client/gradle/*
