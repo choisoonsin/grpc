@@ -1,7 +1,16 @@
+buildscript {
+    ext {
+        protobufVersion = '3.14.0'
+        protobufPluginVersion = '0.8.14'
+        grpcVersion = '1.35.0'
+    }
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'com.google.protobuf' version "${protobufPluginVersion}"
 }
 
 group = 'com.example'
@@ -16,6 +25,34 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // compile "com.google.protobuf:protobuf-java:3.6.1"
+	implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+}
+
+sourceSets {
+    main {
+        proto {
+            srcDirs 'src/main/java/com/example/client'
+            include '../proto'
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${protobufVersion}"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc{}
+        }
+    }
 }
 
 tasks.named('test') {
