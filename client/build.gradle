@@ -28,18 +28,20 @@ dependencies {
     // compile "com.google.protobuf:protobuf-java:3.6.1"
 	implementation "io.grpc:grpc-protobuf:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
+    // https://mvnrepository.com/artifact/com.googlecode.protobuf-java-format/protobuf-java-format
+    implementation 'com.googlecode.protobuf-java-format:protobuf-java-format:1.4'
 }
 
 sourceSets {
     main {
         proto {
-            srcDirs 'src/main/java/com/example/client'
-            include '../proto'
+            srcDirs '../proto'
         }
     }
 }
 
 protobuf {
+    generatedFilesBaseDir = "$projectDir/src"
     protoc {
         artifact = "com.google.protobuf:protoc:${protobufVersion}"
     }
