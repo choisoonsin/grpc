@@ -25,10 +25,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    // compile "com.google.protobuf:protobuf-java:3.6.1"
 	implementation "io.grpc:grpc-protobuf:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
-    // https://mvnrepository.com/artifact/com.googlecode.protobuf-java-format/protobuf-java-format
+    implementation "io.grpc:grpc-netty:${grpcVersion}"
+    implementation "io.grpc:grpc-okhttp:${grpcVersion}"
     implementation 'com.googlecode.protobuf-java-format:protobuf-java-format:1.4'
 }
 
