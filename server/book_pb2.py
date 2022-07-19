@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nbook.proto\x12\x04\x62ook\"\x8d\x01\n\x04\x42ook\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x1f\n\x05genre\x18\x03 \x01(\x0e\x32\x10.book.Book.Genre\x12\x0c\n\x04tags\x18\x04 \x03(\t\"<\n\x05Genre\x12\n\n\x06\x41\x43TION\x10\x00\x12\r\n\tDETECTIVE\x10\x01\x12\x0b\n\x07MYSTERY\x10\x02\x12\x0b\n\x07ROMANCE\x10\x03\x32\x32\n\x0b\x42ookService\x12#\n\x07GetBook\x12\n.book.Book\x1a\n.book.Book\"\x00\x42*\n\x1d\x63om.example.client.rpcserviceB\tBookProtob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nbook.proto\x12\x04\x62ook\"\x9f\x01\n\x04\x42ook\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x1f\n\x05genre\x18\x03 \x01(\x0e\x32\x10.book.Book.Genre\x12\x0c\n\x04tags\x18\x04 \x03(\t\x12\x13\n\x0b\x61uthor_name\x18\x05 \x01(\t\"9\n\x05Genre\x12\x07\n\x03\x41\x43T\x10\x00\x12\r\n\tDETECTIVE\x10\x01\x12\x0b\n\x07MYSTERY\x10\x02\x12\x0b\n\x07ROMANCE\x10\x03\x32\x32\n\x0b\x42ookService\x12#\n\x07GetBook\x12\n.book.Book\x1a\n.book.Book\"\x00\x42*\n\x1d\x63om.example.client.rpcserviceB\tBookProtob\x06proto3')
 
 
 
@@ -33,9 +33,9 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\035com.example.client.rpcserviceB\tBookProto'
   _BOOK._serialized_start=21
-  _BOOK._serialized_end=162
-  _BOOK_GENRE._serialized_start=102
-  _BOOK_GENRE._serialized_end=162
-  _BOOKSERVICE._serialized_start=164
-  _BOOKSERVICE._serialized_end=214
+  _BOOK._serialized_end=180
+  _BOOK_GENRE._serialized_start=123
+  _BOOK_GENRE._serialized_end=180
+  _BOOKSERVICE._serialized_start=182
+  _BOOKSERVICE._serialized_end=232
 # @@protoc_insertion_point(module_scope)

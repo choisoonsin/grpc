@@ -13,12 +13,13 @@ message Book {
     int32 id = 1;
     string name = 2;
     enum Genre {
-        ACTION = 0;
-	DETECTIVE = 1;
-	MYSTERY = 2;
+        UNKOWN = 0;
+	    DETECTIVE = 1;
+	    MYSTERY = 2;
         ROMANCE = 3;
     }
     Genre genre = 3;
     repeated string tags = 4;
+    string author_name = 5;
 }
 

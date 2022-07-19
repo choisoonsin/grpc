@@ -6,13 +6,26 @@ import book_pb2
 import book_pb2_grpc
 
 class BookService(book_pb2_grpc.BookServiceServicer):
+
+    def __init__(self):
+        self.storage = {
+            1:{
+                "id":1,
+                "name":"Who moved the cheese",
+                "genre":book_pb2.Book.ROMANCE,
+                "tags":["romance", "human story"]
+            },
+            2:{
+                "id":2,
+                "name":"Hello Mr Bing!",
+                "genre":book_pb2.Book.MYSTERY,
+                "tags":["Newbery award"]
+            }
+        }
+
     def GetBook(self, request, context):
-        return book_pb2.Book(
-            id=1,
-            name='Bob',
-            genre=book_pb2.Book.ACTION,
-            tags=["romance", "human story"]
-        )
+        book = book_pb2.Book(**self.storage[request.id])
+        return book
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
