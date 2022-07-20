@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.client.rpcservice.BookServiceGrpc;
 import com.example.client.rpcservice.BookProto.Book;
+import com.example.client.rpcservice.BookServiceGrpc;
 import com.googlecode.protobuf.format.JsonFormat;
 
 import io.grpc.ManagedChannel;
