@@ -9,6 +9,16 @@ service BookService {
     rpc GetBook(Book) returns (Book) {}
 }
 
+message BookRequest {
+    Book book = 1;
+}
+
+message BookResponse {
+    repeated Book books = 1;
+    string response_code = 2;
+    string response_msg = 3;
+}
+
 message Book {
     int32 id = 1;
     string name = 2;
