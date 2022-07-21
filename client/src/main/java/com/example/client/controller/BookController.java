@@ -21,9 +21,6 @@ public class BookController {
 
         Book book = Book.newBuilder()
             .setId(id)   
-        //     .setName("Jonny")
-        //     .setGenre(Genre.ROMANCE)
-        //     .addTags("romance").addTags("newbery award")
             .build();
 
         ManagedChannel channel = ManagedChannelBuilder.forTarget("127.0.0.1:50051")

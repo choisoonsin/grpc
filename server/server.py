@@ -11,15 +11,15 @@ class BookService(book_pb2_grpc.BookServiceServicer):
         self.storage = {
             1:{
                 "id":1,
-                "name":"Who moved the cheese",
+                "name":"Who moved my cheese",
                 "genre":book_pb2.Book.ROMANCE,
-                "tags":["romance", "human story"]
+                "tags":["motivational fable"]
             },
             2:{
                 "id":2,
-                "name":"Hello Mr Bing!",
+                "name":"The Giver",
                 "genre":book_pb2.Book.MYSTERY,
-                "tags":["Newbery award"]
+                "tags":["Newbery award", "science"]
             }
         }
 
