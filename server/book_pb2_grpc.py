@@ -14,15 +14,26 @@ class BookServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.GetBooksByBookName = channel.unary_unary(
+                '/book.BookService/GetBooksByBookName',
+                request_serializer=book__pb2.BookRequest.SerializeToString,
+                response_deserializer=book__pb2.BooksResponse.FromString,
+                )
         self.GetBook = channel.unary_unary(
                 '/book.BookService/GetBook',
-                request_serializer=book__pb2.Book.SerializeToString,
-                response_deserializer=book__pb2.Book.FromString,
+                request_serializer=book__pb2.BookRequest.SerializeToString,
+                response_deserializer=book__pb2.BookResponse.FromString,
                 )
 
 
 class BookServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
+
+    def GetBooksByBookName(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def GetBook(self, request, context):
         """Missing associated documentation comment in .proto file."""
@@ -33,10 +44,15 @@ class BookServiceServicer(object):
 
 def add_BookServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'GetBooksByBookName': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetBooksByBookName,
+                    request_deserializer=book__pb2.BookRequest.FromString,
+                    response_serializer=book__pb2.BooksResponse.SerializeToString,
+            ),
             'GetBook': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBook,
-                    request_deserializer=book__pb2.Book.FromString,
-                    response_serializer=book__pb2.Book.SerializeToString,
+                    request_deserializer=book__pb2.BookRequest.FromString,
+                    response_serializer=book__pb2.BookResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -47,6 +63,23 @@ def add_BookServiceServicer_to_server(servicer, server):
  # This class is part of an EXPERIMENTAL API.
 class BookService(object):
     """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def GetBooksByBookName(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/book.BookService/GetBooksByBookName',
+            book__pb2.BookRequest.SerializeToString,
+            book__pb2.BooksResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def GetBook(request,
@@ -60,7 +93,7 @@ class BookService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/book.BookService/GetBook',
-            book__pb2.Book.SerializeToString,
-            book__pb2.Book.FromString,
+            book__pb2.BookRequest.SerializeToString,
+            book__pb2.BookResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
