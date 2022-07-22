@@ -1,2 +1,6 @@
 #client
 /client/gradle/*
+
+#server
+/server/__pycache__/*
+/server/.*

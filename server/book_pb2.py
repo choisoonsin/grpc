@@ -14,12 +14,37 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nbook.proto\x12\x04\x62ook\"\x8d\x01\n\x04\x42ook\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x1f\n\x05genre\x18\x03 \x01(\x0e\x32\x10.book.Book.Genre\x12\x0c\n\x04tags\x18\x04 \x03(\t\"<\n\x05Genre\x12\n\n\x06\x41\x43TION\x10\x00\x12\r\n\tDETECTIVE\x10\x01\x12\x0b\n\x07MYSTERY\x10\x02\x12\x0b\n\x07ROMANCE\x10\x03\x32\x32\n\x0b\x42ookService\x12#\n\x07GetBook\x12\n.book.Book\x1a\n.book.Book\"\x00\x42*\n\x1d\x63om.example.client.rpcserviceB\tBookProtob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nbook.proto\x12\x04\x62ook\"\'\n\x0b\x42ookRequest\x12\x18\n\x04\x62ook\x18\x01 \x01(\x0b\x32\n.book.Book\"U\n\x0c\x42ookResponse\x12\x18\n\x04\x62ook\x18\x01 \x01(\x0b\x32\n.book.Book\x12\x15\n\rresponse_code\x18\x02 \x01(\t\x12\x14\n\x0cresponse_msg\x18\x03 \x01(\t\"W\n\rBooksResponse\x12\x19\n\x05\x62ooks\x18\x01 \x03(\x0b\x32\n.book.Book\x12\x15\n\rresponse_code\x18\x02 \x01(\t\x12\x14\n\x0cresponse_msg\x18\x03 \x01(\t\"\xab\x01\n\x04\x42ook\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x1f\n\x05genre\x18\x03 \x01(\x0e\x32\x10.book.Book.Genre\x12\x0c\n\x04tags\x18\x04 \x03(\t\x12\x1c\n\x06\x61uthor\x18\x05 \x01(\x0b\x32\x0c.book.Author\"<\n\x05Genre\x12\n\n\x06UNKOWN\x10\x00\x12\r\n\tDETECTIVE\x10\x01\x12\x0b\n\x07MYSTERY\x10\x02\x12\x0b\n\x07ROMANCE\x10\x03\"/\n\x06\x41uthor\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0b\n\x03\x64ob\x18\x03 \x01(\t2\x81\x01\n\x0b\x42ookService\x12>\n\x12GetBooksByBookName\x12\x11.book.BookRequest\x1a\x13.book.BooksResponse\"\x00\x12\x32\n\x07GetBook\x12\x11.book.BookRequest\x1a\x12.book.BookResponse\"\x00\x42*\n\x1d\x63om.example.client.rpcserviceB\tBookProtob\x06proto3')
 
 
 
+_BOOKREQUEST = DESCRIPTOR.message_types_by_name['BookRequest']
+_BOOKRESPONSE = DESCRIPTOR.message_types_by_name['BookResponse']
+_BOOKSRESPONSE = DESCRIPTOR.message_types_by_name['BooksResponse']
 _BOOK = DESCRIPTOR.message_types_by_name['Book']
+_AUTHOR = DESCRIPTOR.message_types_by_name['Author']
 _BOOK_GENRE = _BOOK.enum_types_by_name['Genre']
+BookRequest = _reflection.GeneratedProtocolMessageType('BookRequest', (_message.Message,), {
+  'DESCRIPTOR' : _BOOKREQUEST,
+  '__module__' : 'book_pb2'
+  # @@protoc_insertion_point(class_scope:book.BookRequest)
+  })
+_sym_db.RegisterMessage(BookRequest)
+
+BookResponse = _reflection.GeneratedProtocolMessageType('BookResponse', (_message.Message,), {
+  'DESCRIPTOR' : _BOOKRESPONSE,
+  '__module__' : 'book_pb2'
+  # @@protoc_insertion_point(class_scope:book.BookResponse)
+  })
+_sym_db.RegisterMessage(BookResponse)
+
+BooksResponse = _reflection.GeneratedProtocolMessageType('BooksResponse', (_message.Message,), {
+  'DESCRIPTOR' : _BOOKSRESPONSE,
+  '__module__' : 'book_pb2'
+  # @@protoc_insertion_point(class_scope:book.BooksResponse)
+  })
+_sym_db.RegisterMessage(BooksResponse)
+
 Book = _reflection.GeneratedProtocolMessageType('Book', (_message.Message,), {
   'DESCRIPTOR' : _BOOK,
   '__module__' : 'book_pb2'
@@ -27,15 +52,30 @@ Book = _reflection.GeneratedProtocolMessageType('Book', (_message.Message,), {
   })
 _sym_db.RegisterMessage(Book)
 
+Author = _reflection.GeneratedProtocolMessageType('Author', (_message.Message,), {
+  'DESCRIPTOR' : _AUTHOR,
+  '__module__' : 'book_pb2'
+  # @@protoc_insertion_point(class_scope:book.Author)
+  })
+_sym_db.RegisterMessage(Author)
+
 _BOOKSERVICE = DESCRIPTOR.services_by_name['BookService']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\035com.example.client.rpcserviceB\tBookProto'
-  _BOOK._serialized_start=21
-  _BOOK._serialized_end=162
-  _BOOK_GENRE._serialized_start=102
-  _BOOK_GENRE._serialized_end=162
-  _BOOKSERVICE._serialized_start=164
-  _BOOKSERVICE._serialized_end=214
+  _BOOKREQUEST._serialized_start=20
+  _BOOKREQUEST._serialized_end=59
+  _BOOKRESPONSE._serialized_start=61
+  _BOOKRESPONSE._serialized_end=146
+  _BOOKSRESPONSE._serialized_start=148
+  _BOOKSRESPONSE._serialized_end=235
+  _BOOK._serialized_start=238
+  _BOOK._serialized_end=409
+  _BOOK_GENRE._serialized_start=349
+  _BOOK_GENRE._serialized_end=409
+  _AUTHOR._serialized_start=411
+  _AUTHOR._serialized_end=458
+  _BOOKSERVICE._serialized_start=461
+  _BOOKSERVICE._serialized_end=590
 # @@protoc_insertion_point(module_scope)

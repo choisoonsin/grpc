@@ -6,19 +6,43 @@ option java_outer_classname = "BookProto";
 package book;
 
 service BookService {
-    rpc GetBook(Book) returns (Book) {}
+    rpc GetBooksByBookName(BookRequest) returns (BooksResponse) {}
+    rpc GetBook(BookRequest) returns (BookResponse) {}
+}
+
+message BookRequest {
+    Book book = 1;
+}
+
+message BookResponse {
+    Book book = 1;
+    string response_code = 2;
+    string response_msg = 3;
+}
+
+message BooksResponse {
+    repeated Book books = 1;
+    string response_code = 2;
+    string response_msg = 3;
 }
 
 message Book {
     int32 id = 1;
     string name = 2;
     enum Genre {
-        ACTION = 0;
-	DETECTIVE = 1;
-	MYSTERY = 2;
+        UNKOWN = 0;
+	    DETECTIVE = 1;
+	    MYSTERY = 2;
         ROMANCE = 3;
     }
     Genre genre = 3;
     repeated string tags = 4;
+    Author author = 5;
+}
+
+message Author {
+    int32 id = 1;
+    string name = 2;
+    string dob = 3;
 }
 
