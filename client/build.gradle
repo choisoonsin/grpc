@@ -32,6 +32,7 @@ dependencies {
     implementation 'com.googlecode.protobuf-java-format:protobuf-java-format:1.4'
 }
 
+// source 클래스패스가 java project에 인식되지 않는 경우, Clean workspace를 수행한다.
 sourceSets {
     main {
         java {

@@ -7,7 +7,15 @@ package book;
 
 service BookService {
     rpc GetBooksByBookName(BookRequest) returns (BooksResponse) {}
-    rpc GetBook(BookRequest) returns (BookResponse) {}
+    rpc GetBookById(BookRequest) returns (BookResponse) {}
+    rpc GetHello(SimpleStringMessage) returns (SimpleStringMessage) {}
+    rpc GetAllContents(BookRequest) returns (stream SimpleStringMessage) {}
+    rpc SetAllContents(stream SimpleStringMessage) returns (SimpleStringMessage) {}
+    rpc StreamAllBooksById(stream Book) returns (stream Book) {}
+}
+
+message SimpleStringMessage {
+    string message = 1;
 }
 
 message BookRequest {
