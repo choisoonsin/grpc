@@ -37,10 +37,20 @@ def exec_dnn_learning():
 
 class BookService(book_pb2_grpc.BookServiceServicer):
 
+    # WAY1 - Using run_in_executor for calling sync method asynchronously
+    # async def GetHello(self, request, context):
+    #     loop = asyncio.get_event_loop()
+    #     # await loop.run_in_executor(None, exec_dnn_learning)
+    #     loop.run_in_executor(None, exec_dnn_learning)
+
+    #     print(request)
+    #     res = book_pb2.SimpleStringMessage(message=request.message)
+    #     return res
+
+    # WAY2 - Using thread for calling sync method asynchronously
     async def GetHello(self, request, context):
-        loop = asyncio.get_event_loop()
-        # await loop.run_in_executor(None, exec_dnn_learning)
-        loop.run_in_executor(None, exec_dnn_learning)
+        # asyncio.gather(asyncio.to_thread(exec_dnn_learning))
+        asyncio.to_thread(exec_dnn_learning)
 
         print(request)
         res = book_pb2.SimpleStringMessage(message=request.message)
