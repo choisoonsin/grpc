@@ -1,4 +1,5 @@
 import data_storage
+import asyncio
 
 import book_pb2
 import book_pb2_grpc
@@ -23,9 +24,23 @@ fail_message = {
 }
 
 
+def exec_dnn_learning():
+    time.sleep(3)
+
+    # f = open("test.txt", "w")
+    # for i in range(1000, 4000):
+    #     f.write(str(pow(i, i)) + "\n")
+    # f.close()
+
+    print("Learning dnn model has been finished")
+
+
 class BookService(book_pb2_grpc.BookServiceServicer):
 
-    def GetHello(self, request, context):
+    async def GetHello(self, request, context):
+        loop = asyncio.get_event_loop()
+        # await loop.run_in_executor(None, exec_dnn_learning)
+        loop.run_in_executor(None, exec_dnn_learning)
 
         print(request)
         res = book_pb2.SimpleStringMessage(message=request.message)
